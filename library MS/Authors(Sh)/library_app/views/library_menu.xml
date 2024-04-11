@@ -1,0 +1,133 @@
+<odoo>
+
+  <!-- Library App Menu -->
+  <menuitem id="menu_library" name="Library" />
+
+  <!-- Action to open the Book list -->
+  <record id="action_library_book" model="ir.actions.act_window">
+    <field name="name">  Authors</field>
+    <field name="res_model">library.book</field>
+    <field name="view_mode">kanban,form,tree</field>
+    <field name="help" type="html">
+
+      <p class="o_view_nocontent_smiling_face">Create the first Auther</p>
+
+    </field>
+  </record>
+
+   <record id="library_author_view_kanban" model="ir.ui.view">
+      <field name="name">Library Author Kanban</field>
+      <field name="model">library.book</field>
+      <field name="arch" type="xml">
+<kanban string="Author information">
+                <field name="name"/>
+                <field name="image" widget="image"/>
+                   <templates>
+                        <t t-name="kanban-box">
+                            <div class="oe_kanban_vignette oe_semantic_html_override">
+                                <div class="o_kanban_image">
+                                    <div class="o_kanban_image">
+                                        <field name="image" widget="image" class="oe_avatar" />
+                                    </div>
+                                </div>
+                                <div class="oe_kanban_details">
+                                    <h4 class="oe_partner_heading"><a type="open"><field name="name"/></a>
+                                    </h4>
+                                    <div/>
+                                    <div class="oe_kanban_partner_links"/>
+                                    <ul>
+                                        <li>
+                                            <b>Email: </b><field name="email"/>
+                                        </li>
+                                        <li>
+                                            <b>Phone: </b><field name="phone"/>
+                                        </li>
+                                        <li>
+                                            <b>Address: </b><font color="green"><field name="address"/></font>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                   </kanban>
+      </field>
+    </record>
+
+    <record id="library_author_view_tree" model="ir.ui.view">
+     <field name="name">Library Author List</field>
+     <field name="model">library.book</field>
+     <field name="arch" type="xml">
+         <tree>
+             <field name="name"/>
+             <field name="address"/>
+             <field name="phone"/>
+             <field name="email"/>
+             <field name="date_of_birth"/>
+         </tree>
+     </field>
+    </record>
+
+    <record id="library_author_view_form" model="ir.ui.view">
+ <field name="name">Library Author Form</field>
+ <field name="model">library.book</field>
+ <field name="arch" type="xml">
+    <form string="Author">
+            <sheet>
+                <field name="image" widget="image" class="oe_avatar oe_left"/>
+                <div class="oe_title">
+                    <div class="oe_edit_only">
+                        <label for="name" class="oe_edit_only"/>
+                    </div>
+                    <h2>
+                        <field name="name"/>
+                    </h2>
+
+                </div>
+                <notebook>
+                    <page string="Information">
+                        <group>
+                            <group>
+
+                                <field name="address"/>
+                                <field name="email"/>
+                                <field name="phone"/>
+                            </group>
+                            <group>
+                                <field name="date_of_birth"/>
+                                <field name="active"/>
+                            </group>
+                        </group>
+                    </page>
+                    <page string="About Author">
+                        <field name="note" placeholder="Enter the information about Author"/>
+                    </page>
+                </notebook>
+            </sheet>
+    </form>
+
+ </field>
+</record>
+  <!-- Old act_window, deprecated
+  <act_window id="action_library_book"
+    name="Library Books"
+    res_model="library.book"
+    view_mode="tree,form"
+  />
+  -->
+  <!-- Menu item to open the Book list -->
+  <menuitem id="menu_library_book"
+    name="Books"
+    parent="menu_library"
+  />
+  <menuitem id="library_book_menu"
+    name="Authors"
+    parent="menu_library_book"
+    action="action_library_book"
+  />
+
+
+<!--session view-->
+
+
+</odoo>

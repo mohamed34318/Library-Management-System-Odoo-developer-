@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="issues_books_search_view">
+           <field name="name">issues_books.search</field>
+           <field name="model">library.issues_books</field>
+           <field name="arch" type="xml">
+       <search>
+         <field name="name"/>
+           <field name="age"/>
+       </search>
+           </field>
+    </record>
+    <record model="ir.ui.view" id="issues_books_tree_view">
+        <field name="name">issues_books.tree</field>
+        <field name="model">library.issues_books</field>
+        <field name="arch" type="xml">
+      <tree>
+        <field name="name" width="40" colspan="5"/>
+          <field name="age" width="40" colspan="5"/>
+          <field name="description" width="40" colspan="5"/>
+       </tree>
+         </field>
+      </record>
+     </data>
+</odoo>

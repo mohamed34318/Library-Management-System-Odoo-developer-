@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="book_requests_form_view" model="ir.ui.view">
+              <field name="name">Book_requests.form</field>
+              <field name="model">library.book_requests</field>
+              <field name="arch" type="xml">
+            <!---->
+                   <form string="Book_Requests_Form">
+          <group>
+            <field name="user_id"/>
+            <field name="requested_by"/>
+          </group>
+          <group>
+            <field name="request_date"/>
+            <field name="return_date"/>
+          </group>
+          <group>
+               <field name="book_id"/>
+               <field name="name"/>
+               <field name="author"/>
+          </group>
+           <group>
+               <field name="state"/>
+               <field name="edition"/>
+           </group>
+        </form>
+            </field>
+        </record>
+
+        <record id="book_requests_search_view" model="ir.ui.view">
+              <field name="name">Book_Request.search</field>
+              <field name="model">library.book_requests</field>
+              <field name="arch" type="xml">
+            <search>
+                <field name="name" />
+                <field name="book_id" />
+            </search>
+            </field>
+        </record>
+  <record id="book_requests_tree_view" model="ir.ui.view">
+              <field name="name">Book_requests.tree</field>
+              <field name="model">library.book_requests</field>
+              <field name="arch" type="xml">
+                      <tree>
+                          <field name="name" colspan="5" width="40"/>
+                          <field name="state" colspan="5" width="40"/>
+                          <field name="edition" colspan="5" width="40"/>
+                          <field name="requested_by" colspan="5" width="40"/>
+                      </tree>
+              </field>
+  </record>
+
+
+
+    </data>
+</odoo>

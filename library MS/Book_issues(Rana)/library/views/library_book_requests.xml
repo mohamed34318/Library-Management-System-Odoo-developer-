@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<!-- action-->
+
+
+  <record model="ir.actions.act_window" id="book_requests_action" >
+
+    <field name="name">book_requests</field>
+    <field name="res_model">library.book_requests</field>
+    <field name="view_mode">tree,form</field>
+
+  </record>
+
+  <!--  menus -->
+  <menuitem id="library.main_book_requests" name="book_requests" action="book_requests_action" />
+
+</odoo>

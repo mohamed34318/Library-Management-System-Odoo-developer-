@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id='library_member_action' model='ir.actions.act_window'>
+     <field name="name">Library Members</field>
+     <field name="res_model">library.member</field>
+     <field name="view_mode">kanban,form,tree</field>
+    </record>
+  <record id="library_member_view_kanban" model="ir.ui.view">
+      <field name="name">Library Member Kanban</field>
+      <field name="model">library.member</field>
+      <field name="arch" type="xml">
+<kanban string="Member information">
+                <field name="name"/>
+                <field name="picture" widget="image"/>
+
+                   <templates>
+                        <t t-name="kanban-box">
+                            <div class="oe_kanban_vignette oe_semantic_html_override">
+                                <div class="o_kanban_image">
+                                    <div class="o_kanban_image">
+                                        <field name="picture" widget="image" class="oe_avatar" />
+                                    </div>
+                                </div>
+                                <div class="oe_kanban_details">
+                                    <h4 class="oe_partner_heading"><a type="open"><field name="name"/></a>
+                                    </h4>
+                                    <div/>
+                                    <div class="oe_kanban_partner_links"/>
+                                    <ul>
+                                        <li>
+                                            <b>Email: </b><field name="email"/>
+                                        </li>
+                                        <li>
+                                            <b>Phone: </b><field name="phone"/>
+                                        </li>
+                                        <li>
+                                            <b>Age: </b><font color="green"><field name="age"/></font>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                   </kanban>
+      </field>
+    </record>
+<record id="library_member_view_form" model="ir.ui.view">
+ <field name="name">Library member Form</field>
+ <field name="model">library.member</field>
+ <field name="arch" type="xml">
+    <form string="member">
+            <sheet>
+                <field name="picture" widget="image" class="oe_avatar oe_left"/>
+                <div class="oe_title">
+                    <div class="oe_edit_only">
+                        <label for="name" class="oe_edit_only"/>
+                    </div>
+                    <h2>
+                        <field name="name"/>
+                    </h2>
+
+                </div>
+                <notebook>
+                    <page string="Information">
+                        <group>
+                            <group string="Important information">
+
+                                <field name="address"/>
+                                <field name="email"/>
+                                <field name="phone"/>
+                            </group>
+                            <group string="Basic information">
+                                <field name="join_date"/>
+                                <field name="age"/>
+                            </group>
+                        </group>
+                    </page>
+                    <page string="About Me">
+                        <field name="about_you" placeholder="Enter the information about you"/>
+                    </page>
+                </notebook>
+            </sheet>
+    </form>
+
+ </field>
+</record>
+
+    <record id="library_member_view_tree" model="ir.ui.view">
+     <field name="name">Library Member List</field>
+     <field name="model">library.member</field>
+     <field name="arch" type="xml">
+         <tree>
+             <field name="name"/>
+             <field name="address"/>
+             <field name="age"/>
+             <field name="email"/>
+             <field name="join_date"/>
+         </tree>
+     </field>
+    </record>
+
+        <record model="ir.ui.view" id="library_member_search_view">
+            <field name="name">Library Member Search View</field>
+            <field name="model">library.member</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="name"/>
+                    <field name="email"/>
+                    <field name="phone"/>
+                    <field name="join_date"/>
+                    <field name="age"/>
+                </search>
+            </field>
+        </record>
+
+    <menuitem name="My Library" id="library_base_menu" />
+    <menuitem name="Members" id="library_members_menu" parent="library_base_menu" action="library_member_action"/>
+</odoo>
